@@ -1,13 +1,14 @@
 [package]
-authors.workspace = true
-edition.workspace = true
-homepage.workspace = true
-license.workspace = true
 name = "rattler_progress"
-readme.workspace = true
-repository.workspace = true
 version = "0.1.0"
-
+edition.workspace = true
+authors = ["Magenta Qin <magenta2127@gmail.com>"]
+description = "TODO: Description"
+categories.workspace = true
+homepage.workspace = true
+repository.workspace = true
+license.workspace = true
+readme.workspace = true
 
 [dependencies]
 indicatif = { workspace = true }
