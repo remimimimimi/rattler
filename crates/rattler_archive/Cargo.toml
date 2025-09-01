@@ -1,0 +1,46 @@
+[package]
+name = "rattler_archive"
+version = "0.1.0"
+edition = "2021"
+license = "BSD-3-Clause"
+description = "A unified archive extraction library for Rust, supporting multiple formats with progress reporting"
+authors = ["The Rattler Team <hi@prefix.dev>"]
+readme = "README.md"
+homepage = "https://prefix.dev"
+repository = "https://github.com/prefix-dev/rattler"
+documentation = "https://docs.rs/rattler_archive"
+
+[dependencies]
+# Core dependencies
+thiserror = "2"
+fs-err = "2"
+tempfile = "3"
+
+# Archive format support
+tar = "0.4"
+flate2 = { version = "1.0", features = ["zlib-ng"] }
+bzip2 = "0.4"
+xz2 = "0.1"
+zstd = "0.13"
+zip = "2"
+sevenz-rust2 = { version = "0.7", optional = true }
+
+# Progress reporting
+indicatif = { version = "0.17", optional = true }
+
+# Async support
+tokio = { version = "1", features = ["fs"], optional = true }
+
+# URL utilities
+url = { version = "2", optional = true }
+
+[features]
+default = ["progress", "sevenz"]
+progress = ["dep:indicatif"]
+sevenz = ["dep:sevenz-rust2"]
+tokio = ["dep:tokio"]
+url-detection = ["dep:url"]
+
+[dev-dependencies]
+tokio = { version = "1", features = ["macros", "rt", "fs"] }
+tempfile = "3"
